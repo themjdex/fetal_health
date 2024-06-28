@@ -1,0 +1,45 @@
+input_data_path: 'raw_data/fetal_health.csv'
+input_test_data_path: 'raw_data/fetal_health_test.csv'
+output_model_path: 'models/rf.pkl'
+metric_path: 'models/metrics.json'
+splitting_params:
+  val_size: 0.25
+  random_state: 999
+  shuffle: True
+train_params:
+  model_type: 'RandomForestClassifier'
+  class_weight: 'balanced'
+  random_state: 999
+  n_estimators: 459
+  max_depth: 10
+  min_samples_split: 2
+  min_samples_leaf: 2
+  n_jobs: -1
+feature_params:
+  features:
+    - 'baseline value'
+    - 'accelerations'
+    - 'fetal_movement'
+    - 'uterine_contractions'
+    - 'light_decelerations'
+    - 'severe_decelerations'
+    - 'prolongued_decelerations'
+    - 'abnormal_short_term_variability'
+    - 'mean_value_of_short_term_variability'
+    - 'percentage_of_time_with_abnormal_long_term_variability'
+    - 'mean_value_of_long_term_variability'
+    - 'histogram_width'
+    - 'histogram_min'
+    - 'histogram_max'
+    - 'histogram_number_of_peaks'
+    - 'histogram_number_of_zeroes'
+    - 'histogram_mode'
+    - 'histogram_mean'
+    - 'histogram_median'
+    - 'histogram_variance'
+    - 'histogram_tendency'
+  target_col: 'fetal_health'
+  useless_features:
+    - 'histogram_number_of_zeroes'
+    - 'histogram_tendency'
+    - 'severe_decelerations'
